@@ -12,8 +12,8 @@ pipeline {
             steps {
                 echo "Run unit tests to ensure the code functions as expected."
                 echo "Run integration tests to ensure the different components of the application work together as expected."
-                echo "Unit test tool used: ..."
-                echo "Integration test tool used: ..."
+                echo "Unit test tool used: JUnit"
+                echo "Integration test tool used: Citrus"
             }
             post {
                 success {
@@ -36,14 +36,14 @@ pipeline {
         stage("Code Analysis") {
             steps {
                 echo "Analyse the code and ensure it meets industry standards."
-                echo "Code analysis tool used: ..."
+                echo "Code analysis tool used: SonarQube"
             }
         }
 
         stage("Security Scan") {
             steps {
                 echo "Perform a security scan on the code to identify any vulnerabilities."
-                echo "Security scanner used: ..."
+                echo "Security scanner used: Burp Suite"
             }
             post {
                 success {
@@ -66,14 +66,14 @@ pipeline {
         stage("Deploy to Staging") {
             steps {
                 echo "Deploy the application to a staging server."
-                echo "Staging host used: "
+                echo "Staging host used: AWS"
             }
         }
 
         stage("Integration Tests on Staging") {
             steps {
                 echo "Run integration tests on the staging environment to ensure the application functions as expected in a production-like environment."
-                echo "Integration test tool used: ..."
+                echo "Integration test tool used: Selenium"
             }
             post {
                 success {
@@ -96,7 +96,7 @@ pipeline {
         stage("Deploy to Production") {
             steps {
                 echo "Deploy the application to a production server."
-                echo "Production host used: "
+                echo "Production host used: AWS"
             }
         }
     }
