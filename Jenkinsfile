@@ -19,13 +19,15 @@ pipeline {
                     echo "Testing was successful!"
                     mail to: "${EMAIL_DESTINATION}",
                     subject: "Test results",
-                    body: "Testing was successful!"
+                    body: "Testing was successful!",
+                    attachLog: true
                 }
                 failure {
                     echo "Testing failed!"
                     mail to: "${EMAIL_DESTINATION}",
                     subject: "Test results",
-                    body: "Testing failed!"
+                    body: "Testing failed!",
+                    attachLog: true
                 }
             }
         }
@@ -47,13 +49,15 @@ pipeline {
                     echo "Security scan was successful!"
                     mail to: "${EMAIL_DESTINATION}",
                     subject: "Security scan results",
-                    body: "Security scan was successful!"
+                    body: "Security scan was successful!",
+                    attachLog: true
                 }
                 failure {
                     echo "Security scan failed!"
                     mail to: "${EMAIL_DESTINATION}",
                     subject: "Security scan results",
-                    body: "Security scan failed!"
+                    body: "Security scan failed!",
+                    attachLog: true
                 }
             }
         }
@@ -75,13 +79,15 @@ pipeline {
                     echo "Staging tests were successful!"
                     mail to: "${EMAIL_DESTINATION}",
                     subject: "Staging test results",
-                    body: "Staging tests were successful!"
+                    body: "Staging tests were successful!",
+                    attachLog: true
                 }
                 failure {
                     echo "Staging tests failed!"
                     mail to: "${EMAIL_DESTINATION}",
                     subject: "Staging test results",
-                    body: "Staging tests failed!"
+                    body: "Staging tests failed!",
+                    attachLog: true
                 }
             }
         }
