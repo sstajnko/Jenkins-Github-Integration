@@ -4,7 +4,7 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Build the code using a build automation tool to compile and package the code."
-                echo "Tools used: Gradle"
+                echo "Build tool used: Gradle"
             }
         }
 
@@ -12,20 +12,23 @@ pipeline {
             steps {
                 echo "Run unit tests to ensure the code functions as expected."
                 echo "Run integration tests to ensure the different components of the application work together as expected."
-                echo "Tools used: ..."
+                echo "Unit test tool used: ..."
+                echo "Integration test tool used: ..."
             }
             post {
                 success {
                     echo "Testing was successful!"
-                    mail to: "${EMAIL_DESTINATION}",
+                    emailext to: "$DEFAULT_RECIPIENTS",
                     subject: "Test results",
-                    body: "Testing was successful!"
+                    body: "Testing was successful!",
+                    attachLog: true
                 }
                 failure {
                     echo "Testing failed!"
-                    mail to: "${EMAIL_DESTINATION}",
+                    emailext to: "$DEFAULT_RECIPIENTS",
                     subject: "Test results",
-                    body: "Testing failed!"
+                    body: "Testing failed!",
+                    attachLog: true
                 }
             }
         }
@@ -33,27 +36,29 @@ pipeline {
         stage("Code Analysis") {
             steps {
                 echo "Analyse the code and ensure it meets industry standards."
-                echo "Tools used: ..."
+                echo "Code analysis tool used: ..."
             }
         }
 
         stage("Security Scan") {
             steps {
                 echo "Perform a security scan on the code to identify any vulnerabilities."
-                echo "Tools used: ..."
+                echo "Security scanner used: ..."
             }
             post {
                 success {
                     echo "Security scan was successful!"
-                    mail to: "${EMAIL_DESTINATION}",
+                    emailext to: "$DEFAULT_RECIPIENTS",
                     subject: "Security scan results",
-                    body: "Security scan was successful!"
+                    body: "Security scan was successful!",
+                    attachLog: true
                 }
                 failure {
                     echo "Security scan failed!"
-                    mail to: "${EMAIL_DESTINATION}",
+                    emailext to: "$DEFAULT_RECIPIENTS",
                     subject: "Security scan results",
-                    body: "Security scan failed!"
+                    body: "Security scan failed!",
+                    attachLog: true
                 }
             }
         }
@@ -61,27 +66,29 @@ pipeline {
         stage("Deploy to Staging") {
             steps {
                 echo "Deploy the application to a staging server."
-                echo "Staging server used: "
+                echo "Staging host used: "
             }
         }
 
         stage("Integration Tests on Staging") {
             steps {
                 echo "Run integration tests on the staging environment to ensure the application functions as expected in a production-like environment."
-                echo "Tools used: ..."
+                echo "Integration test tool used: ..."
             }
             post {
                 success {
                     echo "Staging tests were successful!"
-                    mail to: "${EMAIL_DESTINATION}",
+                    emailext to: "$DEFAULT_RECIPIENTS",
                     subject: "Staging test results",
-                    body: "Staging tests were successful!"
+                    body: "Staging tests were successful!",
+                    attachLog: true
                 }
                 failure {
                     echo "Staging tests failed!"
-                    mail to: "${EMAIL_DESTINATION}",
+                    emailext to: "$DEFAULT_RECIPIENTS",
                     subject: "Staging test results",
-                    body: "Staging tests failed!"
+                    body: "Staging tests failed!",
+                    attachLog: true
                 }
             }
         }
@@ -89,7 +96,7 @@ pipeline {
         stage("Deploy to Production") {
             steps {
                 echo "Deploy the application to a production server."
-                echo "Hosting provider used: "
+                echo "Production host used: "
             }
         }
     }
