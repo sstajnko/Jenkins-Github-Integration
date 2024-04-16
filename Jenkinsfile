@@ -18,6 +18,11 @@ pipeline {
             steps {
                 echo "Deploying..."
             }
+            post {
+                success {
+                    echo "Deployment Successful!"
+                }
+            }
         }
     }
 }
