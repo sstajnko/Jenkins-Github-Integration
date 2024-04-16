@@ -18,14 +18,14 @@ pipeline {
             post {
                 success {
                     echo "Testing was successful!"
-                    emailext to: "${EMAIL_TO}",
+                    emailext to: '$DEFAULT_RECIPIENTS',
                     subject: "Test results",
                     body: "Testing was successful!",
                     attachLog: true
                 }
                 failure {
                     echo "Testing failed!"
-                    emailext to: "${EMAIL_TO}",
+                    emailext to: '$DEFAULT_RECIPIENTS',
                     subject: "Test results",
                     body: "Testing failed!",
                     attachLog: true
@@ -48,14 +48,14 @@ pipeline {
             post {
                 success {
                     echo "Security scan was successful!"
-                    emailext to: "${EMAIL_TO}",
+                    emailext to: '$DEFAULT_RECIPIENTS',
                     subject: "Security scan results",
                     body: "Security scan was successful!",
                     attachLog: true
                 }
                 failure {
                     echo "Security scan failed!"
-                    emailext to: "${EMAIL_TO}",
+                    emailext to: '$DEFAULT_RECIPIENTS',
                     subject: "Security scan results",
                     body: "Security scan failed!",
                     attachLog: true
@@ -78,14 +78,14 @@ pipeline {
             post {
                 success {
                     echo "Staging tests were successful!"
-                    emailext to: "${EMAIL_TO}",
+                    emailext to: '$DEFAULT_RECIPIENTS',
                     subject: "Staging test results",
                     body: "Staging tests were successful!",
                     attachLog: true
                 }
                 failure {
                     echo "Staging tests failed!"
-                    emailext to: "${EMAIL_TO}",
+                    emailext to: '$DEFAULT_RECIPIENTS',
                     subject: "Staging test results",
                     body: "Staging tests failed!",
                     attachLog: true
